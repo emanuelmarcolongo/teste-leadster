@@ -112,10 +112,10 @@ function AditionalInfo() {
     return (
         <div className="flex items-center justify-around text-sm text-gray-400 font-bold px-5">
             <p>
-                Copyright © 2015 - 2022 Todos os direitos reservados | <Link className="text-main hover:underline" href={"https://leadster.com.br/"}> Leadster </Link>
+                Copyright © 2015 - 2022 Todos os direitos reservados | <Link target="_blank" className="text-main hover:underline" href={"https://leadster.com.br/"}> Leadster </Link>
             </p>
             <p>
-                Rua José Loureiro, 464 - Centro - Curitiba PR - CEP: 80010-000 | Termos de Uso
+                Rua José Loureiro, 464 - Centro - Curitiba PR - CEP: 80010-000 | <span className="text-main hover:cursor-pointer hover:underline">Termos de Uso</span>
             </p>
         </div>
     )
