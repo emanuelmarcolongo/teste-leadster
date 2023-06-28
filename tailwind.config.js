@@ -21,8 +21,8 @@ module.exports = {
       main: '#2c83fb',
       secondary: '#1f76f0',
       fontColor: '#16384d',
-      lightBG: '#E1E6EE',
-      darkBG: '#f0f8ff'
+      darkBG: '#f0f8ff',
+      iconBG: '#838eac'
     },
     extend: {
       backgroundImage: {
