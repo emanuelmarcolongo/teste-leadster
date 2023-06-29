@@ -100,11 +100,10 @@ function Filters() {
 function VideoModal({showModal, setShowModal}: VideoModalProps) {
     
 
-
   return (
-    <div className={` w-[100%] h-[100vh] bg-main bg-opacity-20 fixed bottom-0 left-0 flex items-center justify-center ${showModal ? "block" : "hidden"}`}>
+    <div onClick={() => setShowModal(false)} className={` w-[100%] h-[100vh] bg-main bg-opacity-20 fixed bottom-0 left-0 flex items-center justify-center ${showModal ? "block" : "hidden"}`}>
         
-      <div className="bg-white w-[450px] rounded-xl mx-auto my-auto relative">
+      <div onClick={(e)=> e.stopPropagation()} className="bg-white w-[450px] rounded-xl mx-auto my-auto relative">
       <button onClick={()=> setShowModal(false)} className="absolute top-3 right-3 w-[40px] h-[40px]">X</button>
         <p className="text-fontColor font-semibold self-center mx-auto  p-5 w-[300px]">
           <span className="text-main">Webinar:</span> Como aumentar sua Geração
