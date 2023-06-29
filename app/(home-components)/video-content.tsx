@@ -18,7 +18,7 @@ function VideosContainer() {
     return (
         <div className="flex justify-center w-full">
             <div className="grid lg:grid-cols-3 gap-10">
-            {maxVideosOnDisplay.map((i) => <VideoContainer></VideoContainer>)}
+            {maxVideosOnDisplay.map((i) => <VideoContainer/>)}
             </div>
             
         </div>
@@ -40,19 +40,19 @@ function Filters() {
     <>
       <div className="flex justify-between mt-16">
         <div className="flex space-x-4">
-          <p className="border-2 rounded-2xl border-fontColor py-2 px-3  text-fontColor  font-semibold hover:border-main hover:text-white hover:bg-main">
+          <p className="border-2 rounded-2xl border-fontColor py-2 px-3  text-fontColor  font-semibold hover:border-main hover:text-main ">
             Agências
           </p>
-          <p className="border-2 rounded-2xl border-fontColor py-2 px-3 text-fontColor font-semibold hover:border-main hover:text-white hover:bg-main">
+          <p className="border-2 rounded-2xl border-fontColor py-2 px-3 text-fontColor font-semibold hover:border-main hover:text-main ">
             Chatbot
           </p>
-          <p className="border-2 rounded-2xl border-fontColor py-2 px-3 text-fontColor font-semibold hover:border-main hover:text-white hover:bg-main">
+          <p className="border-2 rounded-2xl border-fontColor py-2 px-3 text-fontColor font-semibold hover:border-main hover:text-main ">
             Marketing Digital
           </p>
-          <p className="border-2 rounded-2xl border-fontColor py-2 px-3 text-fontColor font-semibold hover:border-main hover:text-white hover:bg-main">
+          <p className="border-2 rounded-2xl border-fontColor py-2 px-3 text-fontColor font-semibold hover:border-main hover:text-main ">
             Geração de Leads
           </p>
-          <p className="border-2 rounded-2xl border-fontColor py-2 px-3 text-fontColor font-semibold hover:border-main hover:text-white hover:bg-main">
+          <p className="border-2 rounded-2xl border-fontColor py-2 px-3 text-fontColor font-semibold hover:border-main hover:text-main">
             Mídia Paga
           </p>
         </div>
