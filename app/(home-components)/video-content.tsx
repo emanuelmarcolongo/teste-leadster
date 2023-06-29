@@ -1,38 +1,48 @@
+'use client';
+import { Dispatch, SetStateAction } from "react";
 import Image from "next/image";
-
+import { useState } from "react";
 
 export default function VideoContent() {
-   
+    const [showModal, setShowModal] = useState(false);
 
   return (
     <main className="xl:w-[60%] mx-auto">
       <Filters></Filters>
-      <VideosContainer></VideosContainer>
+      <VideosContainer setShowModal={setShowModal}></VideosContainer>
+      <VideoModal showModal={showModal} setShowModal={setShowModal}/>
     </main>
   );
 }
 
-function VideosContainer() {
-    const maxVideosOnDisplay = Array.from({ length: 9 }, (_, index) => index);
+function VideosContainer({setShowModal}: {setShowModal: Dispatch<SetStateAction<boolean>>}) {
+  const maxVideosOnDisplay = Array.from({ length: 9 }, (_, index) => index);
 
-    return (
-        <div className="flex justify-center w-full">
-            <div className="grid lg:grid-cols-3 gap-10">
-            {maxVideosOnDisplay.map((i) => <VideoContainer/>)}
-            </div>
-            
-        </div>
-    )
-
+  return (
+    <div className="flex justify-center w-full">
+      <div className="grid lg:grid-cols-3 gap-10">
+        {maxVideosOnDisplay.map((i) => (
+          <VideoContainer setShowModal={setShowModal}/>
+        ))}
+      </div>
+    </div>
+  );
 }
 
-function VideoContainer() {
-    return (
-    <div className=" flex flex-col items-center justify-center bg-white rounded-xl drop-shadow-2xl shadow-black">
-        <Image height={250} width={1000} alt="Video Thumbnail" src={'/imgs/thumbnail.png'}></Image>
-        <p className="text-fontColor text-xs font-semibold  px-4 py-2">Como aumentar sua geração de Leads feat. Traktor</p>
+function VideoContainer({setShowModal}: {setShowModal: Dispatch<SetStateAction<boolean>>}) {
+  return (
+    <div onClick={()=> setShowModal(true)} className=" flex flex-col items-center justify-center bg-white rounded-xl drop-shadow-2xl shadow-black cursor-pointer">
+      <Image
+        height={250}
+        width={1000}
+        alt="Video Thumbnail"
+        src={"/imgs/thumbnail.png"}
+      ></Image>
+      <p className="text-fontColor text-md font-semibold  px-4 py-2">
+        Como aumentar sua geração de Leads feat. Traktor
+      </p>
     </div>
-    )
+  );
 }
 
 function Filters() {
@@ -66,5 +76,36 @@ function Filters() {
 
       <hr className="mx-auto my-6 h-[1px] w-full"></hr>
     </>
+  );
+}
+
+function VideoModal({showModal, setShowModal}: {showModal: boolean, setShowModal: Dispatch<SetStateAction<boolean>>}) {
+  return (
+    <div className={` w-[100%] h-[100vh] bg-main bg-opacity-40 fixed bottom-0 left-0 flex items-center justify-center ${showModal ? "block" : "hidden"}`}>
+        
+      <div className="bg-white w-[450px] rounded-xl mx-auto my-auto relative">
+      <button onClick={()=> setShowModal(false)} className="absolute top-3 right-3 w-[40px] h-[40px]">X</button>
+        <p className="text-fontColor font-semibold self-center mx-auto  p-5 w-[300px]">
+          <span className="text-main">Webinar:</span> Como aumentar sua Geração
+          de Leads feat. Traktor
+        </p>
+        <iframe
+          width="450"
+          height="300"
+          src="https://www.youtube.com/embed/a89Htfx0YKo"
+        ></iframe>
+
+        <div className="py-2 px-5">
+          <p className="text-fontColor font-semibold">Descrição:</p>
+          <hr className="mx-auto my-6 h-[1px] w-full " ></hr>
+          <p className="text-sm text-fontColor">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis ad
+            rem distinctio eum aliquam, tenetur magni incidunt explicabo!
+            Dolores earum fugiat culpa nisi praesentium dignissimos magni
+            suscipit blanditiis nihil nesciunt.
+          </p>
+        </div>
+      </div>
+    </div>
   );
 }
