@@ -105,12 +105,14 @@ function VideoModal({showModal, setShowModal}: {showModal: boolean, setShowModal
           <span className="text-main">Webinar:</span> Como aumentar sua Geração
           de Leads feat. Traktor
         </p>
-        <iframe
+
+        {showModal &&  <iframe
           width="450"
           height="300"
           src="https://www.youtube.com/embed/a89Htfx0YKo"
-        ></iframe>
-
+        />
+}
+       
         <div className="py-2 px-5">
           <p className="text-fontColor font-semibold">Descrição:</p>
           <hr className="mx-auto my-6 h-[1px] w-full " ></hr>
