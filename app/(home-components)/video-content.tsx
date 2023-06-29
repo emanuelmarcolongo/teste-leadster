@@ -1,7 +1,12 @@
 'use client';
-import { Dispatch, SetStateAction, useEffect } from "react";
+import { useEffect } from "react";
 import Image from "next/image";
 import { useState } from "react";
+
+interface VideoModalProps {
+  showModal?: boolean;
+  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
 export default function VideoContent() {
     const [showModal, setShowModal] = useState(false);
@@ -28,7 +33,7 @@ export default function VideoContent() {
   );
 }
 
-function VideosContainer({setShowModal}: {setShowModal: Dispatch<SetStateAction<boolean>>}) {
+function VideosContainer({setShowModal}: VideoModalProps) {
   const maxVideosOnDisplay = Array.from({ length: 9 }, (_, index) => index);
 
   return (
@@ -42,7 +47,7 @@ function VideosContainer({setShowModal}: {setShowModal: Dispatch<SetStateAction<
   );
 }
 
-function VideoContainer({setShowModal}: {setShowModal: Dispatch<SetStateAction<boolean>>}) {
+function VideoContainer({setShowModal}: VideoModalProps) {
   return (
     <div onClick={()=> setShowModal(true)} className=" flex flex-col items-center justify-center bg-white rounded-xl drop-shadow-2xl shadow-black cursor-pointer">
       <Image
@@ -92,7 +97,7 @@ function Filters() {
   );
 }
 
-function VideoModal({showModal, setShowModal}: {showModal: boolean, setShowModal: Dispatch<SetStateAction<boolean>>}) {
+function VideoModal({showModal, setShowModal}: VideoModalProps) {
     
 
 
