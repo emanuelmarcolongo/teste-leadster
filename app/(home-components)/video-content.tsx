@@ -1,10 +1,23 @@
 'use client';
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 import Image from "next/image";
 import { useState } from "react";
 
 export default function VideoContent() {
     const [showModal, setShowModal] = useState(false);
+    
+    useEffect(() => {
+        const handleEsc = (event: KeyboardEvent) => {
+           if (event.key === "Escape") {
+            setShowModal(false);
+          }
+        };
+        window.addEventListener('keydown', handleEsc);
+    
+        return () => {
+          window.removeEventListener('keydown', handleEsc);
+        };
+      }, []);
 
   return (
     <main className="xl:w-[60%] mx-auto">
@@ -80,8 +93,11 @@ function Filters() {
 }
 
 function VideoModal({showModal, setShowModal}: {showModal: boolean, setShowModal: Dispatch<SetStateAction<boolean>>}) {
+    
+
+
   return (
-    <div className={` w-[100%] h-[100vh] bg-main bg-opacity-40 fixed bottom-0 left-0 flex items-center justify-center ${showModal ? "block" : "hidden"}`}>
+    <div className={` w-[100%] h-[100vh] bg-main bg-opacity-20 fixed bottom-0 left-0 flex items-center justify-center ${showModal ? "block" : "hidden"}`}>
         
       <div className="bg-white w-[450px] rounded-xl mx-auto my-auto relative">
       <button onClick={()=> setShowModal(false)} className="absolute top-3 right-3 w-[40px] h-[40px]">X</button>
