@@ -65,7 +65,7 @@ function VideosContainer({ videos, currentPage, setCurrentPage }: VideoFilterPro
 
   return (
     <div className="flex flex-col justify-center w-full">
-      <div className="grid lg:grid-cols-3 gap-10">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-10">
         {videos &&
           videos
             .slice(
@@ -201,34 +201,34 @@ function Filters({ setCurrentPage, currentPage, filter, setFilter }: FilterProps
   return (
     <>
       <div className="flex justify-between mt-16">
-        <div className="flex space-x-4">
+        <div className="flex space-x-4 flex-wrap ">
           <p
             onClick={() => handleFilterClick("agencias")}
-            className={`${filter === 'agencias' ? 'text-white bg-main border-main' : 'hover:text-main'} border-2 rounded-2xl border-fontColor py-2 px-3  text-fontColor  font-semibold hover:border-main `}
+            className={`${filter === 'agencias' ? 'text-white bg-main border-main' : 'hover:text-main'} border-2 py-1 px-1 lg:py-2 lg:px-3 rounded-2xl border-fontColor   text-fontColor  font-semibold hover:border-main`}
           >
             Agências
           </p>
           <p
             onClick={() => handleFilterClick("chatbot")}
-            className={`${filter === 'chatbot' ? 'text-white bg-main border-main' : 'hover:text-main'} border-2 rounded-2xl border-fontColor py-2 px-3  text-fontColor  font-semibold hover:border-main `}
+            className={`${filter === 'chatbot' ? 'text-white bg-main border-main' : 'hover:text-main'} border-2 rounded-2xl border-fontColor py-1 px-1 lg:py-2 lg:px-3  text-fontColor  font-semibold hover:border-main `}
           >
             Chatbot
           </p>
           <p
             onClick={() => handleFilterClick("marketing")}
-            className={`${filter === 'marketing' ? 'text-white bg-main border-main' : 'hover:text-main'} border-2 rounded-2xl border-fontColor py-2 px-3  text-fontColor  font-semibold hover:border-main `}
+            className={`${filter === 'marketing' ? 'text-white bg-main border-main' : 'hover:text-main'} border-2 rounded-2xl border-fontColor py-1 px-1 lg:py-2 lg:px-3 text-fontColor  font-semibold hover:border-main `}
           >
             Marketing Digital
           </p>
           <p
             onClick={() => handleFilterClick("leads")}
-            className={`${filter === 'leads' ? 'text-white bg-main border-main' : 'hover:text-main'} border-2 rounded-2xl border-fontColor py-2 px-3  text-fontColor  font-semibold `}
+            className={`${filter === 'leads' ? 'text-white bg-main border-main' : 'hover:text-main'} border-2 rounded-2xl border-fontColor py-1 px-1 lg:py-2 lg:px-3  text-fontColor  font-semibold `}
           >
             Geração de Leads
           </p>
           <p
             onClick={() => handleFilterClick("midia")}
-            className={`${filter === 'midia' ? 'text-white bg-main border-main' : 'hover:text-main'} border-2 rounded-2xl border-fontColor py-2 px-3  text-fontColor  font-semibold hover:border-main `}
+            className={`${filter === 'midia' ? 'text-white bg-main border-main' : 'hover:text-main'} border-2 rounded-2xl border-fontColor py-1 px-1 lg:py-2 lg:px-3  text-fontColor  font-semibold hover:border-main `}
           >
             Mídia Paga
           </p>
