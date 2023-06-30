@@ -69,7 +69,7 @@ export default function Footer() {
 function SocialMedia() {
     return (
 <div className="flex space-x-3">
-            <div className="flex items-center justify-center rounded-full w-[50px] h-[50px] bg-[#f7f8fb] hover:bg-main">
+            <div className="flex items-center justify-center rounded-full w-[50px] h-[50px] bg-[#f7f8fb] hover:bg-main ">
                 <Link href={"https://www.linkedin.com/company/leadster-platform/"} target="_blank">
                 <Image
                 

@@ -2,10 +2,10 @@
 import { useEffect } from "react";
 import Image from "next/image";
 import { useState } from "react";
-import videos from "@/public/assets/videos1.json"
+import videos from "@/public/assets/videos1.json";
 
 interface VideoModalProps {
-  video: VideoProps
+  video: VideoProps;
   showModal?: boolean;
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -20,22 +20,44 @@ interface VideoContainerProps {
   video: VideoProps;
 }
 
+type VideoFilterProps = {
+  videos?: VideoProps[] | null;
+};
 
+type FilterProps = {
+  filter?: string;
+  setFilter: React.Dispatch<React.SetStateAction<string>>;
+};
+
+type PageProps = {
+  currentPage: number,
+  setCurrentPage: React.Dispatch<React.SetStateAction<number>>
+}
 
 export default function VideoContent() {
+  const [filter, setFilter] = useState("all");
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const filteredVideos: VideoProps[] | null = videos.filter((video) => {
+    if (filter === "all") {
+      return true;
+    } else {
+      return video.title.toLowerCase().includes(filter);
+    }
+  });
+
   return (
     <main className="xl:w-[60%] mx-auto">
-      <Filters></Filters>
-      <VideosContainer></VideosContainer>
+      <Filters setCurrentPage={setCurrentPage} currentPage={currentPage} filter={filter} setFilter={setFilter}></Filters>
+      <VideosContainer currentPage={currentPage} setCurrentPage={setCurrentPage} videos={filteredVideos}></VideosContainer>
     </main>
   );
 }
 
-function VideosContainer() {
-
+function VideosContainer({ videos, currentPage, setCurrentPage }: VideoFilterProps & PageProps) {
   const videosPerPage = 9;
-  const totalPages = Math.ceil(videos.length / videosPerPage);
-  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = videos && Math.ceil(videos.length / videosPerPage);
+ 
 
   const handlePageClick = (pageNumber: Number) => {
     setCurrentPage(Number(pageNumber));
@@ -44,30 +66,47 @@ function VideosContainer() {
   return (
     <div className="flex flex-col justify-center w-full">
       <div className="grid lg:grid-cols-3 gap-10">
-      {videos
-          .slice((currentPage - 1) * videosPerPage, currentPage * videosPerPage)
-          .map((video, index) => (
-            <VideoContainer key={index} video={video} />
-          ))}
+        {videos &&
+          videos
+            .slice(
+              (currentPage - 1) * videosPerPage,
+              currentPage * videosPerPage
+            )
+            .map((video, index) => (
+              <VideoContainer key={index} video={video} />
+            ))}
+          
       </div>
+      {totalPages == 0 && <p className="font-semibold w-full text-fontColor flex justify-center items-center mx-auto">Não há videos com esse tema</p>}
       <hr className="mx-auto my-12 h-[1px] w-full "></hr>
-      <div id="pagination" className="flex items-center justify-center my-4 space-x-4">
+      <div
+        id="pagination"
+        className="flex items-center justify-center my-4 space-x-4"
+      >
         <p className="text-fontColor font-semibold text-xl">Página </p>
-        {Array.from({ length: totalPages }, (_, index) => index + 1).map((page) => (
-          <button
-            key={page}
-            onClick={() => handlePageClick(page)}
-            className={`w-[40px] h-[40px] text-fontColor font-semibold text-xl ${currentPage === page ? 'border-2 border-secondary rounded-lg p-1 px-2 text-secondary' : ''}  `}
-          >
-            {page}
-          </button>
-        ))}
+        {totalPages != 0 &&
+          totalPages &&
+          Array.from({ length: totalPages }, (_, index) => index + 1).map(
+            (page) => (
+              <button
+                key={page}
+                onClick={() => handlePageClick(page)}
+                className={`w-[40px] h-[40px] text-fontColor font-semibold text-xl ${
+                  currentPage === page
+                    ? "border-2 border-secondary rounded-lg p-1 px-2 text-secondary"
+                    : ""
+                }  `}
+              >
+                {page}
+              </button>
+            )
+          )}
       </div>
     </div>
   );
 }
 
-function VideoContainer({video}: VideoContainerProps) {
+function VideoContainer({ video }: VideoContainerProps) {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
@@ -98,16 +137,17 @@ function VideoContainer({video}: VideoContainerProps) {
         <p className="text-fontColor text-md font-semibold  px-4 py-2">
           {video?.title}
         </p>
-       
       </div>
-      <VideoModal video={video} showModal={showModal} setShowModal={setShowModal} />
+      <VideoModal
+        video={video}
+        showModal={showModal}
+        setShowModal={setShowModal}
+      />
     </>
   );
 }
 
-
-
-function VideoModal({video, showModal, setShowModal }: VideoModalProps) {
+function VideoModal({ video, showModal, setShowModal }: VideoModalProps) {
   return (
     <div
       onClick={() => setShowModal(false)}
@@ -126,7 +166,7 @@ function VideoModal({video, showModal, setShowModal }: VideoModalProps) {
           X
         </button>
         <p className="text-fontColor font-semibold self-center mx-auto  py-7 px-14">
-          <span className="text-main">Webinar: </span>  {video?.title}
+          <span className="text-main">Webinar: </span> {video?.title}
         </p>
 
         {showModal && (
@@ -152,26 +192,51 @@ function VideoModal({video, showModal, setShowModal }: VideoModalProps) {
   );
 }
 
+function Filters({ setCurrentPage, currentPage, filter, setFilter }: FilterProps & PageProps) {
 
-function Filters() {
+  function handleFilterClick (filter: string) {
+    setFilter(filter);
+    setCurrentPage(1);
+  }
   return (
     <>
       <div className="flex justify-between mt-16">
         <div className="flex space-x-4">
-          <p className="border-2 rounded-2xl border-fontColor py-2 px-3  text-fontColor  font-semibold hover:border-main hover:text-main ">
+          <p
+            onClick={() => handleFilterClick("agencias")}
+            className={`${filter === 'agencias' ? 'text-white bg-main border-main' : 'hover:text-main'} border-2 rounded-2xl border-fontColor py-2 px-3  text-fontColor  font-semibold hover:border-main `}
+          >
             Agências
           </p>
-          <p className="border-2 rounded-2xl border-fontColor py-2 px-3 text-fontColor font-semibold hover:border-main hover:text-main ">
+          <p
+            onClick={() => handleFilterClick("chatbot")}
+            className={`${filter === 'chatbot' ? 'text-white bg-main border-main' : 'hover:text-main'} border-2 rounded-2xl border-fontColor py-2 px-3  text-fontColor  font-semibold hover:border-main `}
+          >
             Chatbot
           </p>
-          <p className="border-2 rounded-2xl border-fontColor py-2 px-3 text-fontColor font-semibold hover:border-main hover:text-main ">
+          <p
+            onClick={() => handleFilterClick("marketing")}
+            className={`${filter === 'marketing' ? 'text-white bg-main border-main' : 'hover:text-main'} border-2 rounded-2xl border-fontColor py-2 px-3  text-fontColor  font-semibold hover:border-main `}
+          >
             Marketing Digital
           </p>
-          <p className="border-2 rounded-2xl border-fontColor py-2 px-3 text-fontColor font-semibold hover:border-main hover:text-main ">
+          <p
+            onClick={() => handleFilterClick("leads")}
+            className={`${filter === 'leads' ? 'text-white bg-main border-main' : 'hover:text-main'} border-2 rounded-2xl border-fontColor py-2 px-3  text-fontColor  font-semibold `}
+          >
             Geração de Leads
           </p>
-          <p className="border-2 rounded-2xl border-fontColor py-2 px-3 text-fontColor font-semibold hover:border-main hover:text-main">
+          <p
+            onClick={() => handleFilterClick("midia")}
+            className={`${filter === 'midia' ? 'text-white bg-main border-main' : 'hover:text-main'} border-2 rounded-2xl border-fontColor py-2 px-3  text-fontColor  font-semibold hover:border-main `}
+          >
             Mídia Paga
+          </p>
+          <p
+            onClick={() => handleFilterClick("all")}
+            className={`${filter === 'all' ? 'text-white bg-main border-main' : 'hover:text-main'} border-2 rounded-2xl border-fontColor py-2 px-3  text-fontColor  font-semibold hover:border-main `}
+          >
+            Todos
           </p>
         </div>
         <div className="flex items-center ml-10">
