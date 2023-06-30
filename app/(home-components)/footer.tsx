@@ -11,48 +11,48 @@ export default function Footer() {
         </p>
       </div>
 
-      <div className="flex w-full justify-around lg:px-32 lg:justify-around">
+      <div className="flex w-full justify-around lg:flex-row flex-col ml-10 lg:ml-0   lg:px-32 lg:justify-around">
         <div className="flex flex-col space-y-4 mb-8 lg:mb-0">
           <p className="text-fontColor font-semibold mb-9">Links Principais</p>
-          <p className="text-gray-400 text-xs lg:text-sm font-bold hover:text-main hover:cursor-pointer">Home</p>
-          <p className="text-gray-400 text-xs lg:text-sm font-bold hover:text-main hover:cursor-pointer" >Ferramentas</p>
-          <p className="text-gray-400 text-xs lg:text-sm font-bold hover:text-main hover:cursor-pointer">Preço</p>
-          <p className="text-gray-400 text-xs lg:text-sm font-bold hover:text-main hover:cursor-pointer">Contato</p>
+          <p className="text-gray-400 text-sm font-bold hover:text-main hover:cursor-pointer">Home</p>
+          <p className="text-gray-400 text-sm font-bold hover:text-main hover:cursor-pointer" >Ferramentas</p>
+          <p className="text-gray-400 text-sm font-bold hover:text-main hover:cursor-pointer">Preço</p>
+          <p className="text-gray-400 text-sm font-bold hover:text-main hover:cursor-pointer">Contato</p>
         </div>
         <div className="flex flex-col space-y-4 mb-8 lg:mb-0">
           <p className="text-fontColor font-semibold mb-9">Cases</p>
-          <p className="text-gray-400 text-xs lg:text-sm font-bold hover:text-main hover:cursor-pointer">
+          <p className="text-gray-400 text-sm font-bold hover:text-main hover:cursor-pointer">
             Geração de Leads B2B
           </p>
-          <p className="text-gray-400 text-xs lg:text-sm font-bold hover:text-main hover:cursor-pointer">
+          <p className="text-gray-400 text-sm font-bold hover:text-main hover:cursor-pointer">
             Geração de Leads em Software
           </p>
-          <p className="text-gray-400 text-xs lg:text-sm font-bold hover:text-main hover:cursor-pointer">
+          <p className="text-gray-400 text-sm font-bold hover:text-main hover:cursor-pointer">
             Geração de Leads em Imobiliária
           </p>
-          <p className="text-gray-400 text-xs lg:text-sm font-bold hover:text-main hover:cursor-pointer">Cases de Sucesso</p>
+          <p className="text-gray-400 text-sm font-bold hover:text-main hover:cursor-pointer">Cases de Sucesso</p>
         </div>
         <div className="flex flex-col space-y-4 mb-8 lg:mb-0">
           <p className="text-fontColor font-semibold mb-9">Materiais</p>
-          <p className="text-gray-400 text-xs lg:text-sm font-bold hover:text-main hover:cursor-pointer">Blog</p>
-          <p className="text-gray-400 text-xs lg:text-sm font-bold hover:text-main hover:cursor-pointer">
+          <p className="text-gray-400 text-sm font-bold hover:text-main hover:cursor-pointer">Blog</p>
+          <p className="text-gray-400 text-sm font-bold hover:text-main hover:cursor-pointer">
             Parceria com Agências
           </p>
-          <p className="text-gray-400 text-xs lg:text-sm font-bold hover:text-main hover:cursor-pointer">
+          <p className="text-gray-400 text-sm font-bold hover:text-main hover:cursor-pointer">
             Guia Definitivo do Marketing
           </p>
-          <p className="text-gray-400 text-xs lg:text-sm font-bold hover:text-main hover:cursor-pointer">Materiais Gratuitos</p>
+          <p className="text-gray-400 text-sm font-bold hover:text-main hover:cursor-pointer">Materiais Gratuitos</p>
         </div>
         <div className="flex flex-col space-y-4 mb-8 lg:mb-0">
           <p className="text-fontColor font-semibold mb-9">Siga a Leadster</p>
           
           <SocialMedia></SocialMedia>
 
-          <p className="text-gray-400 text-xs lg:text-sm font-bold ">
+          <p className="text-gray-400 text-sm font-bold ">
             <strong className="text-fontColor">E-mail:</strong>{" "}
             contato@leadster.com.br
           </p>
-          <p className="text-gray-400 text-xs lg:text-sm font-bold">
+          <p className="text-gray-400 text-sm font-bold">
             <strong className="text-fontColor">Telefone::</strong> (42) 98828 -
             9851
           </p>
