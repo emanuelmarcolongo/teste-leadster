@@ -45,7 +45,7 @@ function VideosContainer() {
   );
 }
 
-function VideoContainer(video: VideoContainerProps) {
+function VideoContainer({video}: VideoContainerProps) {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
@@ -74,11 +74,11 @@ function VideoContainer(video: VideoContainerProps) {
           src={"/imgs/thumbnail.png"}
         ></Image>
         <p className="text-fontColor text-md font-semibold  px-4 py-2">
-          Como aumentar sua geração de Leads feat. Traktor
+          {video?.title}
         </p>
        
       </div>
-      <VideoModal video={video.video} showModal={showModal} setShowModal={setShowModal} />
+      <VideoModal video={video} showModal={showModal} setShowModal={setShowModal} />
     </>
   );
 }
@@ -103,7 +103,7 @@ function VideoModal({video, showModal, setShowModal }: VideoModalProps) {
         >
           X
         </button>
-        <p className="text-fontColor font-semibold self-center mx-auto  p-5 w-[300px]">
+        <p className="text-fontColor font-semibold self-center mx-auto  py-7 px-14">
           <span className="text-main">Webinar: </span>  {video?.title}
         </p>
 
@@ -117,7 +117,7 @@ function VideoModal({video, showModal, setShowModal }: VideoModalProps) {
 
         <div className="py-2 px-5">
           <p className="text-fontColor font-semibold">Descrição:</p>
-          <hr className="mx-auto my-6 h-[1px] w-full "></hr>
+          <hr className="mx-auto my-4 mt-2 h-[1px] w-full "></hr>
           <p className="text-sm text-fontColor">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis ad
             rem distinctio eum aliquam, tenetur magni incidunt explicabo!
