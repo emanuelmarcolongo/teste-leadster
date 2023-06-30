@@ -1,5 +1,6 @@
 import Footer from "./(home-components)/footer";
 import Header from "./(home-components)/header";
+import LeadsContent from "./(home-components)/leads-content";
 import VideoContent from "./(home-components)/video-content";
 
 export default function Home() {
@@ -7,6 +8,7 @@ export default function Home() {
     <main>
       <Header></Header>
       <VideoContent></VideoContent>
+      <LeadsContent></LeadsContent>
       <Footer></Footer>
     </main>
   )

@@ -65,7 +65,7 @@ function VideosContainer({ videos, currentPage, setCurrentPage }: VideoFilterPro
 
   return (
     <div className="flex flex-col justify-center w-full">
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-10">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-10 px-10 lg:px-0">
         {videos &&
           videos
             .slice(
