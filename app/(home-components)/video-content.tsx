@@ -33,12 +33,34 @@ export default function VideoContent() {
 
 function VideosContainer() {
 
+  const videosPerPage = 9;
+  const totalPages = Math.ceil(videos.length / videosPerPage);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const handlePageClick = (pageNumber: Number) => {
+    setCurrentPage(Number(pageNumber));
+  };
 
   return (
-    <div className="flex justify-center w-full">
+    <div className="flex flex-col justify-center w-full">
       <div className="grid lg:grid-cols-3 gap-10">
-        {videos.map((video) => (
-          <VideoContainer key={video.id} video={video}/>
+      {videos
+          .slice((currentPage - 1) * videosPerPage, currentPage * videosPerPage)
+          .map((video, index) => (
+            <VideoContainer key={index} video={video} />
+          ))}
+      </div>
+      <hr className="mx-auto my-12 h-[1px] w-full "></hr>
+      <div id="pagination" className="flex items-center justify-center my-4 space-x-4">
+        <p className="text-fontColor font-semibold text-xl">Página </p>
+        {Array.from({ length: totalPages }, (_, index) => index + 1).map((page) => (
+          <button
+            key={page}
+            onClick={() => handlePageClick(page)}
+            className={`w-[40px] h-[40px] text-fontColor font-semibold text-xl ${currentPage === page ? 'border-2 border-secondary rounded-lg p-1 px-2 text-secondary' : ''}  `}
+          >
+            {page}
+          </button>
         ))}
       </div>
     </div>
