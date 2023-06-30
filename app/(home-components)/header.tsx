@@ -12,10 +12,10 @@ export default function Header() {
             <p className="border-2 rounded-t-3xl rounded-br-3xl py-1 px-4 border-main text-main font-extrabold text-sm">
                 WEBINARS EXCLUSIVOS
             </p>
-            <h2 className="text-fontColor text-4xl "> Menos Conversinha, </h2>
+            <h2 className="text-fontColor sm:text-4xl text-2xl"> Menos Conversinha, </h2>
             <div className="">
-            <h1 className=" relative font-extrabold text-transparent text-6xl bg-clip-text bg-gradient-to-br from-main to-secondary"> Mais Conversão
-            <Image className="absolute bottom-9 -right-4" alt='logo' src={"/imgs/asset-header.png"} height={41} width={41}/>
+            <h1 className=" relative font-extrabold text-transparent text-4xl sm:text-6xl bg-clip-text bg-gradient-to-br from-main to-secondary"> Mais Conversão
+            <Image className="absolute sm:bottom-9 sm:-right-4 max-sm:hidden " alt='logo' src={"/imgs/asset-header.png"} height={41} width={41}/>
              </h1>
             
             </div>

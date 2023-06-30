@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import Image from "next/image";
 import { useState } from "react";
-import videos from "@/public/assets/videos1.json";
+import videos from "@/public/assets/videos.json";
 
 interface VideoModalProps {
   video: VideoProps;
@@ -227,8 +227,8 @@ function Filters({ setCurrentPage, currentPage, filter, setFilter }: FilterProps
             Geração de Leads
           </p>
           <p
-            onClick={() => handleFilterClick("midia")}
-            className={`${filter === 'midia' ? 'text-white bg-main border-main' : 'hover:text-main'} border-2 rounded-2xl border-fontColor py-1 px-1 lg:py-2 lg:px-3  text-fontColor  font-semibold hover:border-main `}
+            onClick={() => handleFilterClick("mídia")}
+            className={`${filter === 'mídia' ? 'text-white bg-main border-main' : 'hover:text-main'} border-2 rounded-2xl border-fontColor py-1 px-1 lg:py-2 lg:px-3  text-fontColor  font-semibold hover:border-main `}
           >
             Mídia Paga
           </p>
