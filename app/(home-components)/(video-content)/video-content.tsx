@@ -8,11 +8,11 @@ import VideosContainer from "./videos-container";
 
 
 export default function VideoContent() {
-  const [filter, setFilter] = useState("all");
+  const [filter, setFilter] = useState("todos");
   const [currentPage, setCurrentPage] = useState(1);
 
   const filteredVideos: VideoProps[] | null = videos.filter((video) => {
-    if (filter === "all") {
+    if (filter === "todos") {
       return true;
     } else {
       return video.title.toLowerCase().includes(filter);
