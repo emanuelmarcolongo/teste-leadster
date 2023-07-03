@@ -18,7 +18,7 @@ export default function VideoModal({
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="bg-white w-[100%] lg:w-1/2 flex flex-col items-center justify-center rounded-xl mx-auto my-auto relative"
+        className="bg-white w-[100%] lg:w-1/3 flex flex-col items-center justify-center rounded-xl mx-auto my-auto relative"
       >
         <button
           onClick={() => setShowModal(false)}
@@ -86,14 +86,12 @@ function DownloadContent({direction}: DownloadContentProps) {
   ];
 
   return (
-    <div className={`flex ${direction === 'column' && 'flex-col items-center justify-center p-4 space-y-4'} w-full ${direction === 'row' && 'space-x-4'}`}>
-      {downloadList.map((item, idx) => (
-        <div
-        key={idx}
-          className={`flex bg-[${item.bg1}] rounded-lg items-center justify-around w-full`}
+    <div className={`flex ${direction === 'column' && 'flex-col items-center justify-center p-4 space-y-4'} w-full ${direction === 'row' && 'space-x-4 w-1/2'}`}>
+      <div
+          className={`flex bg-[#9fefdf] rounded-lg items-center justify-around w-full`}
         >
           <div
-            className={`bg-[${item.bg2}] h-[40px] w-[50px] flex items-center justify-center rounded-l-lg`}
+            className={`bg-[#8ee3d1] h-[40px] w-[50px] flex items-center justify-center rounded-l-lg`}
           >
             <Image
               alt="Download Icon"
@@ -102,11 +100,44 @@ function DownloadContent({direction}: DownloadContentProps) {
               height={20}
             ></Image>
           </div>
-          <p className={`font-semibold text-[${item.fontColor}] text-sm px-2`}>
-            {item.title}
+          <p className={`font-semibold text-[#1eb990] text-sm px-2`}>
+          Spreadsheet.xls
           </p>
         </div>
-      ))}
+        <div
+          className={`flex bg-[#c2e6ff] rounded-lg items-center justify-around w-full`}
+        >
+          <div
+            className={`bg-[#a1d9ff] h-[40px] w-[50px] flex items-center justify-center rounded-l-lg`}
+          >
+            <Image
+              alt="Download Icon"
+              src={"/imgs/download.svg"}
+              width={20}
+              height={20}
+            ></Image>
+          </div>
+          <p className={`font-semibold text-[#43a5f3] text-sm px-2`}>
+          Document.doc
+          </p>
+        </div>
+        <div
+          className={`flex bg-[#fff8d0] rounded-lg items-center justify-around w-full`}
+        >
+          <div
+            className={`bg-[#fff1a0] h-[40px] w-[50px] flex items-center justify-center rounded-l-lg`}
+          >
+            <Image
+              alt="Download Icon"
+              src={"/imgs/download.svg"}
+              width={20}
+              height={20}
+            ></Image>
+          </div>
+          <p className={`font-semibold text-[#bfad68] text-sm px-2`}>
+          Presentation.ppt
+          </p>
+        </div>
       {direction === 'column' && <div
           className={`flex bg-[#e8eef3] rounded-lg items-center justify-around w-full`}
         >
