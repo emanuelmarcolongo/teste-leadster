@@ -14,9 +14,9 @@ export default function Header() {
 function HeaderContent() {
   return (
     <div className="bg-darkBG gap-3 flex justify-center items-center flex-col w-full h-[50vh]">
-      <p className="border-2 rounded-t-3xl rounded-br-3xl py-1 px-4 border-main text-main font-extrabold text-sm">
+      <h2 className="border-2 rounded-t-3xl rounded-br-3xl py-1 px-4 border-main text-main font-extrabold text-sm">
         WEBINARS EXCLUSIVOS
-      </p>
+      </h2>
       <h2 className="text-fontColor sm:text-4xl text-2xl">
         {" "}
         Menos Conversinha,{" "}
@@ -35,7 +35,7 @@ function HeaderContent() {
         </h1>
       </div>
       <hr className="h-[1px] w-1/4 my-2 "></hr>
-      <p className="text-red text-xs">
+      <p className="text-red text-xs px-10 text-center">
         Conheça nossas estratégias que <strong>mudaram o jogo</strong> e como
         aplicá-las no seu negócio
       </p>
