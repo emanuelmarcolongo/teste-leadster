@@ -18,7 +18,7 @@ export default function VideoModal({
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="bg-white w-[100%] lg:w-1/3 flex flex-col items-center justify-center rounded-xl mx-auto my-auto relative"
+        className="bg-white w-[100%] lg:w-1/2 flex flex-col items-center justify-center rounded-xl mx-auto my-auto relative"
       >
         <button
           onClick={() => setShowModal(false)}
@@ -55,7 +55,7 @@ export default function VideoModal({
           <DownloadContent direction='row'/>
         </div>
       </div>
-      <div className="absolute bottom-0 left-0 bg-white w-[200px] height-[400px]">
+      <div className="hidden lg:block  absolute bottom-0 left-0 bg-white w-[200px] height-[400px]">
       <DownloadContent direction="column"/>
       </div>
       
